@@ -1,11 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import {Button, StyleSheet, Text, View} from 'react-native';
+import {useState} from "react";
+
 
 export default function App() {
+
+  const [count, setCount]=useState(0)
+    const [checked, setChecked]=useState(false)
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <Text>I think you the best</Text>
+      <Text>{count}</Text>
+        <Button
+            onPress={()=>{
+                debugger
+                setCount(count +1)}}
+            title="Learn More"
+            color="#841584"
+            accessibilityLabel="Learn more about this purple button"
+        />
     </View>
   );
 }
