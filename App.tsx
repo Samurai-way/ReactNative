@@ -4,8 +4,12 @@ import {SafeAreaProvider} from "react-native-safe-area-context";
 import {Provider} from "react-redux";
 import {store} from "./components/store/store";
 import {useAppDispatch, useAppSelector} from "./components/store/redux-utils";
-import {createSlice} from "@reduxjs/toolkit";
-import {testSlice} from "./components/reducers/test/testSlice";
+import {ChangeEvent, ChangeEventHandler, useState} from "react";
+import {getOMD} from "./components/actions/getAction";
+import {ActivityIndicator, MD2Colors} from "react-native-paper";
+import {Data} from "./components/UI/Data";
+import {SearchContent} from "./components/UI/SearchContent";
+
 
 // const Stack = createNativeStackNavigator<RootStackParamList>();
 // const Stack = createBottomTabNavigator();
@@ -60,23 +64,20 @@ export default function App() {
 }
 
 export const Test = () => {
-    const count = useAppSelector(state => state.test.count)
-    const dispatch = useAppDispatch()
-    const inc = testSlice.actions.inc
 
-    const onClickButton = () => {
-        dispatch(inc(count +1 ))
+    const isLoading = useAppSelector(state => state.first.isLoading)
+    const data = useAppSelector(state => state.first.data)
+    console.log(data)
+    if(isLoading){
+        return <ActivityIndicator animating={true} size={'large'} color={MD2Colors.blue500}/>
     }
 
     return(
         <View>
-            <Text>
-                {count}
-            </Text>
-            <View>
-                <Button onPress={onClickButton} title={'increment'}/>
-            </View>
+            <SearchContent/>
+            <Data/>
         </View>
+
 
     )
 }
