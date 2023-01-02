@@ -7,38 +7,38 @@ import {RootAuth} from "./components/Screens/AuthScreens/RootAuth";
 
 // const Stack = createNativeStackNavigator<RootStackParamList>();
 // const Stack = createBottomTabNavigator();
-const Stack = createDrawerNavigator();
-function HomeScreen({navigation}: any) {
-    return (
-        <WithSafeAreaView>
-            <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-                <Text>Home Screen</Text>
-                <Button title={'button'} onPress={() => navigation.navigate('DetailsScreen')}/>
-                <Button title={'button'} onPress={() => navigation.navigate('UserScreen')}/>
-            </View>
-        </WithSafeAreaView>
-    );
-}
-
-function DetailsScreen({navigation}: any) {
-    return (
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-            <Text>Details Screen</Text>
-            <Button title={'button'} onPress={() => navigation.navigate('HomeScreen')}/>
-            <Button title={'button'} onPress={() => navigation.navigate('UserScreen')}/>
-        </View>
-    );
-}
-
-function UserScreen({navigation}: any) {
-    return (
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-            <Text>Details Screen</Text>
-            <Button title={'button'} onPress={() => navigation.navigate('HomeScreen')}/>
-            <Button title={'button'} onPress={() => navigation.navigate('DetailsScreen')}/>
-        </View>
-    );
-}
+// const Stack = createDrawerNavigator();
+// function HomeScreen({navigation}: any) {
+//     return (
+//         <WithSafeAreaView>
+//             <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+//                 <Text>Home Screen</Text>
+//                 <Button title={'button'} onPress={() => navigation.navigate('DetailsScreen')}/>
+//                 <Button title={'button'} onPress={() => navigation.navigate('UserScreen')}/>
+//             </View>
+//         </WithSafeAreaView>
+//     );
+// }
+//
+// function DetailsScreen({navigation}: any) {
+//     return (
+//         <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+//             <Text>Details Screen</Text>
+//             <Button title={'button'} onPress={() => navigation.navigate('HomeScreen')}/>
+//             <Button title={'button'} onPress={() => navigation.navigate('UserScreen')}/>
+//         </View>
+//     );
+// }
+//
+// function UserScreen({navigation}: any) {
+//     return (
+//         <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+//             <Text>Details Screen</Text>
+//             <Button title={'button'} onPress={() => navigation.navigate('HomeScreen')}/>
+//             <Button title={'button'} onPress={() => navigation.navigate('DetailsScreen')}/>
+//         </View>
+//     );
+// }
 
 export default function App() {
 
@@ -48,22 +48,25 @@ export default function App() {
     return (
         <SafeAreaProvider>
             <NavigationContainer>
-                <Stack.Navigator>
-                    <Stack.Screen name="RootAuth" component={RootAuth}/>
-                    <Stack.Screen name="Profile" component={DetailsScreen}/>
-                    <Stack.Screen name="Feed" component={UserScreen}/>
-                </Stack.Navigator>
+                <Text>
+                    Hello friend
+                </Text>
+                {/*<Stack.Navigator>*/}
+                {/*    <Stack.Screen name="RootAuth" component={RootAuth}/>*/}
+                {/*    <Stack.Screen name="Profile" component={DetailsScreen}/>*/}
+                {/*    <Stack.Screen name="Feed" component={UserScreen}/>*/}
+                {/*</Stack.Navigator>*/}
             </NavigationContainer>
         </SafeAreaProvider>
     );
 }
 
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});
+// const styles = StyleSheet.create({
+//     container: {
+//         flex: 1,
+//         backgroundColor: '#fff',
+//         alignItems: 'center',
+//         justifyContent: 'center',
+//     },
+// });
