@@ -1,9 +1,11 @@
-import {Button, StyleSheet, Text, View} from 'react-native';
+import {Button, Text, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {SafeAreaProvider} from "react-native-safe-area-context";
-import {WithSafeAreaView} from "./components/WithSafeAreaView";
-import {createDrawerNavigator} from "@react-navigation/drawer";
-import {RootAuth} from "./components/Screens/AuthScreens/RootAuth";
+import {Provider} from "react-redux";
+import {store} from "./components/store/store";
+import {useAppDispatch, useAppSelector} from "./components/store/redux-utils";
+import {createSlice} from "@reduxjs/toolkit";
+import {testSlice} from "./components/reducers/test/testSlice";
 
 // const Stack = createNativeStackNavigator<RootStackParamList>();
 // const Stack = createBottomTabNavigator();
@@ -41,27 +43,43 @@ import {RootAuth} from "./components/Screens/AuthScreens/RootAuth";
 // }
 
 export default function App() {
-
-    // const [count, setCount] = useState(0)
-    // const [checked, setChecked] = useState(false)
-
     return (
+        <Provider store={store}>
         <SafeAreaProvider>
             <NavigationContainer>
-                <Text>
-                    Hello friend
-                </Text>
+                <Test/>
                 {/*<Stack.Navigator>*/}
                 {/*    <Stack.Screen name="RootAuth" component={RootAuth}/>*/}
                 {/*    <Stack.Screen name="Profile" component={DetailsScreen}/>*/}
                 {/*    <Stack.Screen name="Feed" component={UserScreen}/>*/}
                 {/*</Stack.Navigator>*/}
             </NavigationContainer>
-
         </SafeAreaProvider>
+        </Provider>
     );
 }
 
+export const Test = () => {
+    const count = useAppSelector(state => state.test.count)
+    const dispatch = useAppDispatch()
+    const inc = testSlice.actions.inc
+
+    const onClickButton = () => {
+        dispatch(inc(count +1 ))
+    }
+
+    return(
+        <View>
+            <Text>
+                {count}
+            </Text>
+            <View>
+                <Button onPress={onClickButton} title={'increment'}/>
+            </View>
+        </View>
+
+    )
+}
 
 // const styles = StyleSheet.create({
 //     container: {
