@@ -10,6 +10,7 @@ export const Data = () => {
     return (
         <View>
             <FlatList
+                columnWrapperStyle={{justifyContent:'center'}}
                 data={data}
                 numColumns={2}
                 renderItem={({item}) => <FilmSearched film={item}/>}

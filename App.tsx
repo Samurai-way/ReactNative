@@ -1,11 +1,9 @@
-import {Button, Text, View} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {SafeAreaProvider} from "react-native-safe-area-context";
 import {Provider} from "react-redux";
 import {store} from "./components/store/store";
-import {useAppDispatch, useAppSelector} from "./components/store/redux-utils";
-import {ChangeEvent, ChangeEventHandler, useState} from "react";
-import {getOMD} from "./components/actions/getAction";
+import {useAppSelector} from "./components/store/redux-utils";
 import {ActivityIndicator, MD2Colors} from "react-native-paper";
 import {Data} from "./components/UI/Data";
 import {SearchContent} from "./components/UI/SearchContent";
@@ -46,6 +44,22 @@ import {SearchContent} from "./components/UI/SearchContent";
 //     );
 // }
 
+const styles = StyleSheet.create({
+    global: {
+        width: '100%',
+        height: '100%'
+    },
+    loader: {
+        position: 'absolute',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        left: 0,
+        right: 0,
+        width: '100%',
+        height: '100%',
+    },
+})
+
 export default function App() {
     return (
         <Provider store={store}>
@@ -69,11 +83,11 @@ export const Test = () => {
     const data = useAppSelector(state => state.first.data)
     console.log(data)
     if(isLoading){
-        return <ActivityIndicator animating={true} size={'large'} color={MD2Colors.blue500}/>
+        return <ActivityIndicator style={styles.loader} animating={true} size={'large'} color={MD2Colors.blue500}/>
     }
 
     return(
-        <View>
+        <View style={styles.global}>
             <SearchContent/>
             <Data/>
         </View>
@@ -81,6 +95,10 @@ export const Test = () => {
 
     )
 }
+
+// const styles = StyleSheet.create({
+//
+// })
 
 // const styles = StyleSheet.create({
 //     container: {
