@@ -57,6 +57,7 @@ export default function App() {
                 {/*    <Stack.Screen name="Feed" component={UserScreen}/>*/}
                 {/*</Stack.Navigator>*/}
             </NavigationContainer>
+
         </SafeAreaProvider>
     );
 }
